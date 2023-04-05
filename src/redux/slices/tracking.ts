@@ -21,11 +21,14 @@ export const trackingSlice = createSlice({
   reducers: {
     addItemTracking: (state, action) => {
       state.items.push(action.payload);
+    },
+    deleteItemTracking: (state, action) => {
+      state.items = state.items.filter((item) => item.code !== action.payload);
     }
   },
 })
 
-export const { addItemTracking } = trackingSlice.actions;
+export const { addItemTracking, deleteItemTracking } = trackingSlice.actions;
 
 export const selectItems = (state: { slice: { items: Tracking; }; }) => state.slice.items;
 
